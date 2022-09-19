@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   increment, decrement, reset, incrementByAmount,
 } from './counterSlice';
+import './counter.css';
 
 const Counter = () => {
   // Add state to the component
@@ -22,17 +23,11 @@ const Counter = () => {
   return (
     <section className="counter__container">
       <p>{count}</p>
-      <div>
-        <button
-          type="submit"
-          onClick={() => dispatch(increment())}
-        >
+      <div className="btn__container1">
+        <button type="submit" onClick={() => dispatch(increment())}>
           +
         </button>
-        <button
-          type="submit"
-          onClick={() => dispatch(decrement())}
-        >
+        <button type="submit" onClick={() => dispatch(decrement())}>
           -
         </button>
       </div>
@@ -41,9 +36,16 @@ const Counter = () => {
         value={incrementAmount}
         onChange={(e) => setIncrementAmount(e.target.value)}
       />
-      <div>
-        <button type="submit" onClick={() => dispatch(incrementByAmount(addValue))}>Add Amount</button>
-        <button type="submit" onClick={resetAll}>Reset</button>
+      <div className="btn">
+        <button
+          type="submit"
+          onClick={() => dispatch(incrementByAmount(addValue))}
+        >
+          Add Amount
+        </button>
+        <button type="submit" onClick={resetAll}>
+          Reset
+        </button>
       </div>
     </section>
   );
