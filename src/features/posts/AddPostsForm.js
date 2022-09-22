@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
 
 import { postAdded } from './postsSlice';
 
@@ -13,11 +12,7 @@ const AddPostsForm = () => {
   const onSavePostClicked = () => {
     if (title && content) {
       dispatch(
-        postAdded({
-          id: nanoid(),
-          title,
-          content,
-        }),
+        postAdded(title, content),
       );
 
       setTitle('');
