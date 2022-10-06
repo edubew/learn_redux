@@ -1,10 +1,13 @@
 import React from 'react';
-import Counter from './features/counter/Counter';
+import PostsList from './features/posts/PostsList';
+import AddPostsForm from './features/posts/AddPostsForm';
 
 const App = () => (
-  <div>
-    <Counter />
-  </div>
+  <main>
+    <AddPostsForm />
+    <hr />
+    <PostsList />
+  </main>
 );
 
 export default App;
