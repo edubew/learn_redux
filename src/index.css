@@ -4,10 +4,11 @@ body {
 
 main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  margin: 5% 30%;
+  margin: 5% 10%;
   color: aliceblue;
+  gap: 6rem;
 }
 
 .form__container h2 {
@@ -47,7 +48,7 @@ option {
 }
 
 button {
-  width: 30%;
+  width: 30vw;
   padding: 0.8rem;
   border-radius: 0.4rem;
   border: none;
@@ -63,11 +64,7 @@ button:hover {
 }
 
 hr {
-  width: 80%;
-  height: 1px;
-  background: aqua;
-  border: none;
-  margin: 3rem;
+  display: none;
 }
 
 .postList__container h2 {
@@ -79,11 +76,13 @@ article {
   padding: 1.2rem;
   border-radius: 0.3rem;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 article p {
   margin: 0;
   line-height: 1.5rem;
+  width: 30vw;
 }
 
 .post__credits {
@@ -102,4 +101,24 @@ article p {
 .reaction__button:hover {
   background: transparent;
   box-shadow: 0 0 4px 4px cyan;
+}
+
+@media screen and (max-width: 743px) {
+  main {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  hr {
+    display: block;
+    width: 60%;
+    height: 1px;
+    background: aqua;
+    border: none;
+    margin: 3rem;
+  }
+
+  article p {
+    width: 80vw;
+  }
 }
