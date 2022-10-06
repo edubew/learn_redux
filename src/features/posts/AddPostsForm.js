@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { postAdded } from './postsSlice';
 import { selectAllUsers } from '../users/usersSlice';
 
@@ -23,23 +22,27 @@ const AddPostsForm = () => {
       dispatch(
         postAdded(title, content, userId),
       );
-
       setTitle('');
       setContent('');
+      setUserId('');
     }
   };
 
-  const usersOptions = users.map((user) => (
+  const canSave = Boolean(title) && Boolean(content) && Boolean(userId);
+
+  const userOptions = users.map((user) => (
     <option key={user.id} value={user.id}>
       {user.name}
     </option>
   ));
 
   return (
-    <section>
+    <section className="form__container">
       <h2>Add a New Post</h2>
       <form onSubmit={onSavePostClicked}>
-        <label htmlFor="postTitle">Post Title:</label>
+        <label htmlFor="postTitle" className="label">
+          Post Title:
+        </label>
         <input
           type="text"
           id="postTitle"
@@ -47,19 +50,24 @@ const AddPostsForm = () => {
           value={title}
           onChange={onTitleChanged}
         />
-        <label htmlFor="postAuthor">Author:</label>
+        <label htmlFor="postAuthor" className="label">
+          Author:
+        </label>
         <select id="postAuthor" value={userId} onChange={onAuthorChanged}>
           <option value=""> </option>
-          {usersOptions}
+          {userOptions}
         </select>
-        <label htmlFor="postTitle">Content:</label>
+        <label htmlFor="postContent" className="label">
+          Content:
+        </label>
         <textarea
-          id="postTitle"
-          name="postTitle"
+          type="text"
+          id="postContent"
+          name="postContent"
           value={content}
           onChange={onContentChanged}
         />
-        <button type="submit">Save Post</button>
+        <button type="submit" disabled={!canSave}>Save Post</button>
       </form>
     </section>
   );

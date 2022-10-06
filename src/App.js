@@ -5,6 +5,7 @@ import AddPostsForm from './features/posts/AddPostsForm';
 const App = () => (
   <main>
     <AddPostsForm />
+    <hr />
     <PostsList />
   </main>
 );
